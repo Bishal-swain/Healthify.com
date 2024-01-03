@@ -1,0 +1,694 @@
+<html>
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Complete Responsive Hospital Website Design Tutorial</title>
+
+<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+<style>
+  *
+{
+ margin:0;
+ padding:0;
+ box-sizing:border-box;
+ font-family:'poppins',sans-serif;
+}
+:root{
+ --bg-color: #fdfdfd;
+ --text-color: #333;
+ --main-color: #754ef9;
+ --white-color: #fdfdfd;
+ --shadow-color: #rgba(0,0,0, .2)
+}
+.dark-mode{
+ --bg-color: #0b061f;
+ --text-color: #fff;
+}
+
+body{
+ background-image: url(back.jpg);
+ color: var(--text-color);
+ background-attachment: fixed;
+ background-repeat: no-repeat;
+ background-size: cover;
+ background-blend-mode: color-burn;
+
+}
+
+.header
+{
+ position:fixed;
+ top:0;
+ left:0;
+ width:100%;
+ padding:20px 7%;
+ background: transparent;
+ display:flex;
+ align-items:center;
+ z-index:100;
+ transition: .5s;
+}
+
+.header.sticky{
+  background: var(--bg-color);
+  box-shadow: 0 .1rem 1rem var(--shadow-color); 
+}
+.logo
+{
+
+ font-size:40px;
+ color:black;
+ text-decoration:none;
+ font-weight:600;
+ cursor: default;
+ margin-right: auto;
+ opacity: 0;
+ animation: slideRight 1s ease forwards;
+}
+.logo span{
+  color: #000;
+}
+.navbar a
+{
+  
+ position:relative;
+ display: inline-block;
+ font-size:18px;
+ color: black;
+ text-decoration:none;
+ font-weight:500;
+ margin-right:12px;
+ opacity: 0;
+ animation: slideLeft 1s ease forwards;
+ animation-delay: calc(.2s * var(--i));
+}
+
+.header.sticky .navbar a{
+ color: var(--text-color);
+}
+
+.header.sticky .navbar a.active{
+ color: var(--main-color);
+}
+.navbar a.active::before{
+  content:'';
+  position: absolute;
+  left:0;
+  bottom:-6px;
+  width:100%;
+  height: 2px;
+  background: var(--white-color);
+}
+
+.header.sticky .navbar a::before{
+  background: var(--main-color);
+  opacity: .7;
+}
+
+#darkMode-icon{
+  font-size: 1.5rem;
+  color: var(--white-color);
+  cursor: pointer;
+  opacity: 0;
+  animation: slideLeft 1s ease forwards;
+  animation-delay: 3.5s;
+}
+.header.sticky #darkMode-icon{
+  background: var(--text-color);
+  opacity: 0;
+}
+section{
+ min-height:100vh;
+ padding: 5rem 7% 2rem;
+}
+
+.home
+{
+ width:100%;
+ height:100vh;
+ display:flex;
+ align-items:center;
+ padding:60px 7% 0;
+}
+.home-content
+{
+ max-width:500px;
+}
+.home .home-content{
+ max-width:440px;
+}
+.home-content h3
+{
+ font-size:32px;
+ line-height: .3;
+ color: white;
+ opacity: 10px;
+ animation: slideRight 1s ease forwards;
+ animation-delay: .7s;
+}
+.home-content h1
+{
+  font-size:56px;
+  font-weight:700;
+  margin-bottom: 3px;
+  color: white;
+  opacity: 10px;
+  animation: slideRight 1s ease forwards;
+  animation-delay: 1s;
+}
+.home-content p{
+ font-size:16px;
+ opacity: 0;
+
+color: white;
+ animation: slideLeft 1s ease forwards;
+ animation-delay: 1s;
+}
+.social-media a{
+ display: inline-flex;
+ justify-content: center;
+ align-items: center;
+ width: 40px;
+ height: 40px;
+ background: blue;
+ border: 2px solid var(--main-color);
+ border-radius: 50%;
+ box-shadow: 0 2px 5px rgba(0, 0, 0, .2);
+ font-size: 20px;
+ color: white;
+ text-decoration: none;
+ margin: 25px 15px 30px 0;
+ transition: .3s ease;
+ opacity: 0;
+ animation: slideLeft 1s ease forwards;
+ animation-delay: calc(.5s * var(--i));
+}
+.social-media a:hover{
+ background: var(--main-color);
+ color: #fff;
+}
+.btn{
+ display: inline-block;
+ padding: 12px 28px;
+ background: var(--main-color);
+ border-radius: 6px;
+ box-shadow:0 2px 5px rgba(0,0,0, .2);
+ border: 1px solid transparent;
+ font-size: 16px;
+ color: #fff;
+ letter-spacing: 1px;
+ text-decoration: none;
+ font-weight: 600;
+ transition: .3s ease;
+ opacity: 0;
+ animation: slideTop 1s ease forwards;
+ animation-delay: 2s;
+
+}
+.btn:hover{
+ background: transparent;
+ color: var(--main-color);
+ border-color: var(--main-color);
+}
+.home .profession-container{
+ position: absolute;
+ top: 50%;
+ right: 0;
+ transform: translateY(-50%);
+ width: 595px;
+ height: 595px;
+ overflow: hidden;
+}
+.profession-container .profession-box{
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+ animation: slideLeft 1s ease forwards,professionRotate 13s ease-out infinite;
+ animation-delay: 2.5s,3.5s;
+  
+}
+.profession-box .profession{
+ position: absolute;
+ left: 0;
+ transform-origin: 295px;
+ transform: rotate(calc(360deg/4*var(--i)));
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+ color: var(--main-color);
+ background: var(--bg-color);
+ padding: 13px 0;
+ 
+}
+.profession-box .profession:nth-child(1)i{
+ margin-right: 15px;
+}
+.profession-box .profession:nth-child(2){
+ margin-right: 20px;
+}
+.profession-box .profession:nth-child(4){
+ margin-right: 20px;
+}
+.profession i{
+ font-size: 50px; 
+ line-height: 1;
+}
+.profession h3{
+ font-size: 18px;
+ line-height: 2.5;
+}
+#background-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1; /* Place it behind other content */
+     /* Adjust opacity if necessary */
+}
+.profession-box .circle{
+ width: 72%;
+ height: 72%;
+ border: 3px solid var(--main-color);
+ border-radius: 50%;
+}
+.profession-container .overlay{
+ position: absolute;
+ top: 0;
+ right: 0;
+ width: 0;
+ height: 0;
+ border-top: 298px solid var(--main-color);
+ border-right: 298px solid var(--main-color);
+ border-bottom: 298px solid var(--main-color);
+ border-left: 298px solid transparent;
+ opacity: 0;
+ animation: slideLeft 1s ease forwards;
+ animation-delay: 2.5s;
+}
+.profession-box .profession{
+  border-radius: 50%;
+  height: 130px;
+  width: 160px;
+
+}
+.home-img img{
+ position: absolute;
+ bottom: 0;
+ left: 0;
+ width: 100%;
+ pointer-events: none;
+ opacity: 0;
+ animation: slideLeft 1s ease forwards;
+ animation-delay: 2.8s;
+}
+
+span{
+ color: var(--main-color);
+}
+
+.about{
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ gap: 1rem;
+}
+
+.about-img img{
+ width: 40vw;
+}
+
+.heading{
+ font-size: 3rem;
+ text-height: 1.2;
+}
+
+.about-content h2{
+ text-align: left;
+ line-height: 1.2;
+ color: white;
+}
+
+.about-content h3{
+ font-size: 2rem;
+  color: white;
+}
+
+.about-content p{
+ font-size: 1.2rem;
+ margin: 1rem 0 2rem;
+  color:white;
+}
+
+.department{
+ min-height: auto;
+ padding-bottom: 7rem;
+}
+
+.department h2{
+ margin-bottom: 5rem;
+ color: white;
+}
+.department span{
+  color: white;
+}
+
+.department .department-container{
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ flex-wrap: wrap;
+ gap: 1rem;
+}
+
+.department-container .department-box {
+  flex: 1 1 30px;
+  background: var(--bg-color);
+  padding: 3rem;
+  border-radius: 10px;
+  text-align: center;
+  margin: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  border-top: .6rem solid var(--main-color);
+  border-bottom: .6rem solid var(--main-color);
+  transition: .5s ease;
+}
+
+.department-container .department-box:hover {
+ box-shadow: 0 .1rem 2rem var(--shadow-color);
+ transform: scale(1.02);
+}
+
+.department-box i {
+ font-size: 35px; 
+ color: var(--main-color);
+}
+.department-box h3 {
+ font-size: 2rem;
+ transition: .5s ease;
+}
+.department-box:hover h3{
+ color: var(--main-color);
+}
+
+.department-box p {
+ font-size: 1rem;
+ margin: 1rem 0 3rem;
+}
+
+.doctors {
+ padding-bottom: 5rem;
+}
+
+.doctors h2 {
+ margin-bottom: 4rem;
+ color: white;
+}
+.doctors span{
+  color: white;
+}
+.doctors .doctors-container {
+ display: grid;
+ grid-template-colums: repeat(3, 1fr);
+ align-items: center;
+ gap: 2.5rem;
+}
+.doctors-container .doctors-box {
+  flex: 1 1 30px;
+  background: var(--bg-color);
+  padding: 3rem;
+  border-radius: 10px;
+  text-align: center;
+  margin: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  border-top: .6rem solid var(--main-color);
+  border-bottom: .6rem solid var(--main-color);
+  transition: .5s ease;
+}
+.doctors-container .doctors-box:hover {
+ box-shadow: 0 .1rem 2rem var(--shadow-color);
+ transform: scale(1.02);
+}
+.doctors-box i {
+ font-size:2rem;
+ color: #333;
+}
+.doctors-box img{
+ width: 100%;
+ transition: .5s ease;
+}
+.doctors-box:hover img{
+ transform: scale(1);
+}
+.doctors-box .doctors-layer {
+ position: absolute;
+ bottom: 0;
+ left: 0;
+ width: 100%;
+ height: 100%;
+ background: linear-gradient(rgba(0,0,0, .1), var(--main-color));
+ color: var(--white-color);
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ flex-direction: column;
+ text-align: center;
+ padding: 0 4rem;
+ opacity: 0;
+ transition: .5s ease;
+}
+.doctors-box:hover .doctors-layer {
+ opacity: 1;
+}
+.doctors-layer  h4 {
+ font-size: 2rem;
+}
+.doctors-layer p {
+ font-size: 1.3rem;
+ margin: .3rem 0 1rem;
+}
+
+
+@keyframes slideRight{
+ 0%{
+     opacity: 0;
+     transform: translateX(-100px);
+   }
+ 100%{
+     opacity: 1;
+     transform: translateX(0);
+   }
+}
+@keyframes slideLeft{
+ 0%{
+     opacity: 0;
+     transform: translateX(100px);
+   }
+ 100%{
+     opacity: 1;
+     transform: translateX(0);
+   }
+}
+@keyframes slideTop{
+ 0%{
+     opacity: 0;
+     transform: translateY(100px);
+   }
+ 100%{
+     opacity: 1;
+     transform: translateY(0);
+   }
+}
+@keyframes professionRotate{
+ 0%,20%{
+     transform: rotate(0deg);
+   }
+ 25%,45%{
+     transform: rotate(-90deg);
+   }
+ 50%,70%{
+     transform: rotate(-180deg);
+   }
+ 75%,95%{
+     transform: rotate(-270deg);
+   }
+ 100%{
+     transform: rotate(-360deg);
+   }
+}
+@media only screen and (max-width: 600px){
+  
+.profession-container{
+ position: absolute;
+ top: 0;
+ right: 0;
+
+ width:0;
+ height: 0;
+ overflow: hidden;
+}
+}
+@keyframes home{
+  profession-container{
+  position: absolute;
+ top: 0;
+ right: 0;
+
+ width:0;
+ height: 0;
+ overflow: hidden;
+}}
+</style>
+</head>
+<body>
+  
+ <header class="header">
+ 
+ <a href="#" class="logo"><span>H</span>ealth<span>i</span>fy...</a>
+ <nav class="navbar">
+  <a href="#home"style="--i:12;" class="active">Home</a>
+  <a href="#about"style="--i:13;">About</a>
+  <a href="#department"style="--i:14;">Department</a>
+  <a href="index.html"style="--i:15;">Doctors</a>
+  <a href="contact.html"style="--i:16;">Contact Us</a>
+ </nav>
+
+</header>
+
+
+<section class="home" id="home"> 
+ <div class="home-content">
+  <h3>Hello,</h3>
+  <h1>Making Health Care Better Together</h1>
+  <p>“Living in the moment means letting go of the past and not waiting for the future. It means living your life consciously, aware that each moment you breathe is a gift.”</p>
+
+ <div class="social-media">
+  <a href="#"style="--i:7;"><i class='bx bxl-facebook'></i></a>
+  <a href="#"style="--i:8;"><i class='bx bxl-twitter'></i></a>
+  <a href="#"style="--i:9;"><i class='bx bxl-instagram'></i></a>
+  <a href="#"style="--i:10;"><i class='bx bxl-linkedin'></i></a>
+ </div>
+ <a href="login.html" input type="submit" class="btn">Sign-in</a>
+ </div>
+ <div class="profession-container"> 
+   <div class="profession-box">
+     <div class="profession" style="--i:0;">
+       <i class='bx bx-plus-medical'></i>
+       <h3>PATERNALISTIC</h3>
+     </div>
+     <div class="profession"style="--i:1;">
+       <i class='bx bx-chat' ></i>
+       <h3>DELIBERATIVE</h3>
+     </div>
+     <div class="profession"style="--i:2;">
+        <i class='bx bx-shield-quarter'></i>
+        <h3>INFORMATIVE</h3>
+     </div>
+     <div class="profession"style="--i:3;">
+       <i class='bx bx-clinic'></i>
+       <h3>INTERPRETIVE</h3>
+     </div>
+
+     <div class="circle"></div>
+    </div>
+
+     <div class="overlay"></div>
+   </div>
+
+   
+</section>
+
+
+<section class="about"id="about">
+ <div class="about-img">
+ <img src="about.jpg" alt="">
+ </div>
+
+ <div class="about-content">
+  <h2 class="heading">About<span>Us</span></h2>
+  <h3>Hi, We Are Here To Solve Your Problem!!</h3>
+  <p>Doctors are considered the most important and responsible people in society. They are the ones who support when someone is struggling with their health. Doctors are the ones to have a profound knowledge of all kinds of diseases, their symptoms, and their treatments. They work day and night selflessly for society’s good health. Just like people serving in the army rarely take a break, doctors also are available whenever necessary. Reliability, hard work and sincerity are qualities that every doctor possesses.</p>
+ <a href="about.html" class="btn">Read More</a>
+ </div>
+</section>
+
+
+<section class="department" id="department">
+ <h2 class="heading">Our <span> Services</span></h2>
+
+ <div class="department-container">
+ <div class="department-box">
+  <i class='bx bxs-thermometer'></i>
+  <h3>FEVER</h3>
+  <p>You get a fever because your body is trying to kill the virus or bacteria that caused the infection. Most of those bacteria and viruses do well when your body is at your normal temperature. But if you have a fever, it is harder for them to survive. Fever also activates your body's immune system.</p>
+  <a href="feverindex.html" class="btn">Check</a>
+ </div>
+ 
+ <div class="department-box">
+  <i class='bx bx-show-alt'></i>
+  <h3>EYE TEST</h3>
+  <p>You get a fever because your body is trying to kill the virus or bacteria that caused the infection. Most of those bacteria and viruses do well when your body is at your normal temperature. But if you have a fever, it is harder for them to survive. Fever also activates your body's immune system.</p>
+  <a href="index2.html" class="btn">Check</a>
+ </div>
+
+ <div class="department-box">
+  <i class='bx bxs-vial'></i>
+  <h3>BLOOD TEST</h3>
+  <p>You get a fever because your body is trying to kill the virus or bacteria that caused the infection. Most of those bacteria and viruses do well when your body is at your normal temperature. But if you have a fever, it is harder for them to survive.</p>
+  <a href="Bloodindex.html" class="btn">Check</a>
+ </div>
+
+ <div class="department-box">
+  <i class='bx bx-health'></i>
+  <h3>BLOOD SUGAR TEST</h3>
+  <p>You get a fever because your body is trying to kill the virus or bacteria that caused the infection. Most of those bacteria and viruses do well when your body is at your normal temperature...... </p>
+  <a href="sugarindex.html" class="btn">Check</a>
+ </div>
+
+ <div class="department-box">
+  <i class='bx bx-test-tube'></i>
+  <h3>BLOOD CAMP</h3>
+  <p>You get a fever because your body is trying to kill the virus or bacteria that caused the infection. Most of those bacteria and viruses do well when your body is at your normal temperature. But if you have a fever, it is harder for them to survive.</p>
+  <a href="#" class="btn">Check</a>
+ </div>
+ </div>
+</section>
+
+
+<section class="doctors" id="doctors">
+ <h2 class="heading">With <span>You</span></h2>
+ <div class="doctors-container">
+  <div class="doctors-box">
+   <i class='bx bx-user'></i>
+   <img src="withu.jpg" alt="">
+   <div class="doctors-layer">
+   <h4>Raj kumar Mohanta</h4>
+   <p>.....................</p>
+   <a href="talk2.html" class="btn">Talk With Us</a>
+   </div>
+  </div>
+   <div class="doctors-box">
+   <i class='bx bx-user'></i>
+   <img src="withu.jpg" alt="">
+   <div class="doctors-layer">
+   <h4>Arpita Senapati</h4>
+   <p>.....................</p>
+   <a href="talk1.html" class="btn">Talk With Us</a>
+   </div>
+  </div>
+ </div>
+</section>
+
+
+
+</body>
+</html>

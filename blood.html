@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blood Test Website</title>
+    <link rel="stylesheet" href="blood.css">
+</head>
+<body>
+    <header>
+        <h1>Blood Test Center</h1>
+    </header>
+
+    <main>
+        <section id="instructions">
+            <h2>Instructions</h2>
+            <p>Fill out the form below to request a blood test appointment.</p>
+        </section>
+
+        <section id="appointment-form">
+            <h2>Appointment Request Form</h2>
+            <form id="bloodTestForm">
+                <label for="name">Full Name:</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="phone">Phone Number:</label>
+                <input type="tel" id="phone" name="phone" required>
+
+                <label for="preferredDate">Preferred Date:</label>
+                <input type="date" id="preferredDate" name="preferredDate" required>
+
+                <button type="submit">Submit Request</button>
+                <a href="home.html" class="btn">Home</a>
+            </form>
+        </section>
+
+        <section id="result">
+            <h2>Test Result</h2>
+            <p id="resultMessage"></p>
+        </section>
+    </main>
+
+    <script src="blood.js"></script>
+</body>
+</html>

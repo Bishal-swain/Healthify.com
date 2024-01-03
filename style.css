@@ -1,0 +1,105 @@
+*{
+	font-family: 'poppins',sans-serif;
+}
+body{
+	background-image: url("bck.png");
+	display: flex;
+	justify-content: center;
+	min-height: 80vh;
+}
+.con{
+	background: url("bck2.jpg");
+	background-repeat: no-repeat;
+	background-size: cover;
+	border-radius: 10px;
+	min-height: 200px;
+	height: 500px;
+	min-width: 400px;
+	position: absolute;
+	top: 20%;
+	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 2px 20px 0 rgba(0,0,0,0.2);
+    opacity:2;
+ }
+ .header{
+ 	display: flex;
+ 	justify-content: center;
+ 	margin: 30px 0 0 0;
+ 	font-size: 35px;
+ 	color: #fff;
+ }
+ .input-con{
+ 	margin: 30px 30px 10px 30px;
+ }
+ label{
+ 	color: #fff;
+ 	margin: 0 9 5px 15px;
+ }
+ .input-field{
+ 	display: flex;
+ 	flex-direction: column;
+ 	margin: 15px 0 15px 0;
+
+ }
+ .input-field1{
+ 	display: flex;
+ 	flex-direction: column;
+ 	margin: 15px 0 15px 0;
+ }
+ input{
+ 	outline: none;
+ 	padding: 0 20px 0 20px;
+ 	border:2px solid rgba(255,255,255,255,0.015);
+ 	background: rgba(255,255,255,0.35);
+ 	height: 38px;
+ 	box-shadow: 0 1px 10px 0 rgba(0,0,0,0.085) 0 2px 30px 0 rgba(0,0,0,0.2);
+ 	border-radius: 50px;
+ 	font-size: 16px;
+ 	color: #fff;
+ }
+ input:focus{
+ 	border: 2px solid rgba(255,255,255,0.65);
+ 	background: transparent;
+ 	box-shadow: none;
+ 	border-radius: 30px;
+ }
+ .submit{
+ 	background: transparent;
+ 	height: 45px;
+ 	border:2px solid rgba(255,255,255,0.65);
+ 	box-shadow: none;
+ 	transition: 0.4s ease-in-out;
+ }
+ .submit:hover{
+    color: rgb(106,87,168);
+    cursor: pointer;
+    border:2px solid rgba(255,255,255,0.16);
+    background: rgba(255,255,255,0.35);
+    box-shadow:  0 1px 10px 0 rgba(0,0,0,0.085) 0 2px 30px 0 rgba(0,0,0,0.2);
+ }
+ span{
+ 	display: flex;
+ 	justify-content:right;
+
+ }
+ span a{
+ 	color: #fff;
+ 	font-size: 12px;
+ 	text-decoration: none;
+ }
+ .submit another{
+ 	color: red;
+ }
+ .submit1{
+	background: transparent;
+	height: 40px;
+	border:2px solid rgba(255, 255, 255, 0.507);
+	box-shadow: none;
+	transition: 0.4s ease-in-out;
+}
+.submit1:hover{
+   color: rgb(106,87,168);
+   cursor: pointer;
+   border:2px solid rgba(255,255,255,0.16);
+   background: rgba(255,255,255,0.35);
+   box-shadow:  0 1px 10px 0 rgba(0,0,0,0.085) 0 2px 30px 0 rgba(0,0,0,0.2);
+}

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eye Test and Slot Booking</title>
+    <link rel="stylesheet" href="style5.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Eye Test</h1>
+        <div id="eye-chart">
+            <!-- Eye test chart goes here -->
+            <!-- You can use different eye test charts based on your needs -->
+        
+        </div>
+        <div id="booking-form">
+            <h2>Slot Booking</h2>
+            <form id="slotForm">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="date">Preferred Date:</label>
+                <input type="date" id="date" name="date" required>
+
+                <label for="time">Preferred Time:</label>
+                <input type="time" id="time" name="time" required>
+
+                <button type="submit">Book Slot</button>
+                <button onclick="goToHome()">Home</button>
+            </form>
+        </div>
+         <div id="messageBox" style="display: none;">
+            <p>Thank you for slot booking!</p>
+
+        </div>
+    </div>
+
+    <script src="js.js"></script>
+</body>
+</html>
